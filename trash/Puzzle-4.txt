@@ -1,0 +1,31 @@
+PUZZLE
+
+00      34      CALLVALUE
+01      38      CODESIZE
+02      18      XOR
+03      56      JUMP
+04      FD      REVERT
+05      FD      REVERT
+06      FD      REVERT
+07      FD      REVERT
+08      FD      REVERT
+09      FD      REVERT
+0A      5B      JUMPDEST
+0B      00      STOP
+
+Enter the value to send:
+
+
+SOLUTION
+
+XOR := 
+    µ'_s[0]_i = µ_s[0]_i + µ_s[1]_i mod 2 : i in [0 ... 255]
+
+CALLVALUE = x,
+CODESIZE = 12 = 1100,
+JUMPDEST = 10 = 1010,
+
+1100 + x = 1010
+x = 0110
+
+Answer: 6

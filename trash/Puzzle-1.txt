@@ -1,0 +1,42 @@
+PUZZLE
+
+00      34      CALLVALUE
+01      56      JUMP
+02      FD      REVERT
+03      FD      REVERT
+04      FD      REVERT
+05      FD      REVERT
+06      FD      REVERT
+07      FD      REVERT
+08      5B      JUMPDEST
+09      00      STOP
+
+Enter the value to send:
+
+
+SOLUTION
+
+w := I_b[µ_pc] : µ_pc < ||I_b|| ; STOP : o/w
+
+o := H(µ, I)
+
+D_j(c, i) = {i} + D_j(c, N(i, c[i])) : c[i] = JUMPDEST
+
+H(µ, I) = H_return(µ) : w in {RETURN, REVERT}
+
+CALLVALUE := 
+    µ'_s[0] = I_v
+
+JUMP := 
+    J_jump(µ) = µ_s[0],
+    µ'_pc = J_jump(µ) : w = JUMP 
+
+REVERT :=
+    H_return(µ) = µ_m[ µ_s[0] ... (µ_s[0] + µ_s[1] - 1) ]
+
+CALLVALUE = x,
+JUMPDEST = 8
+
+x = 8
+
+Answer: 8

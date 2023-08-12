@@ -1,0 +1,65 @@
+PUZZLE
+
+00      36        CALLDATASIZE
+01      6000      PUSH1 00
+03      80        DUP1
+04      37        CALLDATACOPY
+05      36        CALLDATASIZE
+06      6000      PUSH1 00
+08      6000      PUSH1 00
+0A      F0        CREATE
+0B      6000      PUSH1 00
+0D      80        DUP1
+0E      80        DUP1
+0F      80        DUP1
+10      80        DUP1
+11      94        SWAP5
+12      5A        GAS
+13      F1        CALL
+14      6000      PUSH1 00
+16      14        EQ
+17      601B      PUSH1 1B
+19      57        JUMPI
+1A      FD        REVERT
+1B      5B        JUMPDEST
+1C      00        STOP
+
+Enter the calldata:
+
+
+SOLUTION
+
+SWAPn :=
+    µ'_s[0] = µ[n]
+    µ'_s[n] = µ[0]
+
+GAS := 
+    µ'_s[0] = µ_g
+
+CALL :=
+    (σ', g', A', x, o) = Θ(σ, A^*, I_a, I_o, t, t, C_callgas(σ, μ, A), I_p, µ_s[2], µ_s[2], i, I_e + 1, I_w) 
+        : µ_s[2] ≤ σ[I_a]_b && I_e < 1024
+    C_callgas(σ, μ, A) = f(µ_s[0], ...)
+    t = µ_s[1] mod 2^160
+    A^* = A except: A^*_a = A_a + {t}
+    i = μ_m[ μ_s[3] ... (µ_s[3] + µ_s[4] - 1) ]
+    µ'_s[0] = x : 
+        x = 0 : failure  ; 1 o/w
+
+CALLDATA = init,
+JUMPDEST = 1B,
+JUMPI -> 1B : success(CALL) = 00
+
+6001    PUSH1 01
+80      DUP1
+61000d  PUSH2 000d
+6000    PUSH1 00
+39      CODECOPY
+6000    PUSH1 00
+f3      RETURN
+fe      INVALID
+fd      REVERT
+
+success(CALL) = 00 : failure by 0xfd REVERT
+
+Answer: 0x60018061000d6000396000f3fefd

@@ -1,0 +1,31 @@
+PUZZLE
+
+00      34      CALLVALUE
+01      38      CODESIZE
+02      03      SUB
+03      56      JUMP
+04      FD      REVERT
+05      FD      REVERT
+06      5B      JUMPDEST
+07      00      STOP
+08      FD      REVERT
+09      FD      REVERT
+
+Enter the value to send:
+
+
+SOLUTION
+
+CODESIZE := 
+    µ'_s[0] = ||I_b||
+
+SUB := 
+    µ'_s[0] = µ_s[0] - µ_s[1]
+
+CALLVALUE = x,
+CODESIZE = 10,
+JUMPDEST = 6
+
+10 - x = 6
+
+Answer: 4

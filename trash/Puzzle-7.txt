@@ -1,0 +1,61 @@
+PUZZLE
+
+00      36        CALLDATASIZE
+01      6000      PUSH1 00
+03      80        DUP1
+04      37        CALLDATACOPY
+05      36        CALLDATASIZE
+06      6000      PUSH1 00
+08      6000      PUSH1 00
+0A      F0        CREATE
+0B      3B        EXTCODESIZE
+0C      6001      PUSH1 01
+0E      14        EQ
+0F      6013      PUSH1 13
+11      57        JUMPI
+12      FD        REVERT
+13      5B        JUMPDEST
+14      00        STOP
+
+Enter the calldata:
+
+
+SOLUTION
+
+CREATE :=
+    (σ', g', A', z, o) = Λ(σ^*, A, I_a, I_o, L(µ_g), I_p, µ_s[0], i, I_e + 1, ζ, I_w) 
+        : µ_s[0] ≤ σ[I_a]_b & I_e < 1024
+    σ^* = σ except: σ^*[I_a]_n = σ[I_a]_n + 1
+    i = μ_m[ μ_s[1] ... (µ_s[1] + µ_s[2] - 1) ]
+    µ'_s[0] = x : 
+        x = 0 : z = 0 ; ADDR(I_a, σ[I_a]_n, ζ, i) o/w
+    
+CALLDATACOPY :=
+    µ'_m[µ_s[0] + i] = I_d[µ_s[1] + i] : i in {0, ..., µ_s[2] - 1}
+
+EXTCODESIZE := 
+    µ'_s[0] = ||b|| : KECC(b) = σ[µ_s[0] mod 2^160]_c
+
+MSTORE8 := 
+    µ'_m[µ_s[0]] = µ_s[1] mod 256 
+
+RETURN := 
+    H_return(µ) = µ_m[ µ_s[0] ... (µ_s[0] + µ_s[1] - 1) ]
+
+
+CALLDATA = init,
+EXTCODESIZE = output(init).size,
+JUMPDEST = 13,
+JUMPI -> 13 : EXTCODESIZE = 01
+
+6000  PUSH1 00
+6000  PUSH1 00
+53    MSTORE8
+6001  PUSH 01
+6000  PUSH 00
+f3    RETURN
+
+OUTPUT = 00 STOP,
+EXTCODESIZE = 01
+
+Answer: 0x600060005360016000f3

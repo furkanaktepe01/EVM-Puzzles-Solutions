@@ -1,0 +1,47 @@
+PUZZLE
+
+00      34          CALLVALUE
+01      80          DUP1
+02      02          MUL
+03      610100      PUSH2 0100
+06      14          EQ
+07      600C        PUSH1 0C
+09      57          JUMPI
+0A      FD          REVERT
+0B      FD          REVERT
+0C      5B          JUMPDEST
+0D      00          STOP
+0E      FD          REVERT
+0F      FD          REVERT
+
+Enter the value to send:
+
+
+SOLUTION
+
+DUPn := 
+    µ'_s[0] = µ_s[n - 1]
+
+MUL := 
+    µ'_s[0] = µ_s[0] x µ_s[1]
+
+PUSHn := 
+    µ'_s[0] = c((µ_pc + 1) ... (µ_pc + n)) : 
+        c(X) = (c(X_0), ..., c(X_||X||-1)) :
+        c(x) = I_b[x] : x < ||I_b|| ; 0 : o/w
+
+EQ :=
+    µ'_s[0] = 1 : µ_s[0] = µ_s[1] ; 0 : o/w
+
+JUMPI := 
+    J_jumpi(µ) = µ_s[0] : µ_s[1] != 0 : µ_pc + 1 : o/w,
+    µ'_pc = J_jumpi(µ) : w = JUMPI 
+
+CALLVALUE = x,
+JUMPDEST = 0C,
+JUMPI -> 0C : x^2 = 0100
+
+x^2 = 0x0100 = 256
+x = 0x10 = 16
+
+Answer: 16

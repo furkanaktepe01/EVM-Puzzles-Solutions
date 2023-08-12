@@ -1,0 +1,24 @@
+PUZZLE
+
+00      36      CALLDATASIZE
+01      56      JUMP
+02      FD      REVERT
+03      FD      REVERT
+04      5B      JUMPDEST
+05      00      STOP
+
+Enter the calldata:
+
+
+SOLUTION
+
+CALLDATASIZE := 
+    µ'_s[0] = ||I_d||
+
+CALLDATASIZE = x,
+JUMPDEST = 4
+
+x = 4
+size(0x00000000) = 4
+
+Answer: 0x00000000
