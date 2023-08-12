@@ -1,0 +1,38 @@
+PUZZLE
+
+00      36        CALLDATASIZE
+01      6000      PUSH1 00
+03      6000      PUSH1 00
+05      37        CALLDATACOPY
+06      36        CALLDATASIZE
+07      6000      PUSH1 00
+09      6000      PUSH1 00
+0B      F0        CREATE
+0C      6000      PUSH1 00
+0E      80        DUP1
+0F      80        DUP1
+10      80        DUP1
+11      80        DUP1
+12      94        SWAP5
+13      5A        GAS
+14      F1        CALL
+15      3D        RETURNDATASIZE
+16      600A      PUSH1 0A
+18      14        EQ
+19      601F      PUSH1 1F
+1B      57        JUMPI
+1C      FE        INVALID
+1D      FE        INVALID
+1E      FE        INVALID
+1F      5B        JUMPDEST
+20      00        STOP
+
+Enter the calldata:
+
+
+SOLUTION
+
+RETURNDATASIZE := 
+
+
+Answer: 
