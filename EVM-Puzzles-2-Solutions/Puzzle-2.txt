@@ -33,6 +33,26 @@ Enter the calldata:
 SOLUTION
 
 RETURNDATASIZE := 
+    µ'_s[0] = ||µ_o|| 
 
 
-Answer: 
+CALLDATA = init
+
+JUMPDEST = 1F,
+JUMPI -> 1F : 0A = size(output(CALL))
+
+60 05  
+80     
+61 000d 
+60 00    
+39     
+60 00    
+f3     
+fe     
+60 0a
+60 00
+f3
+
+10 = size(output(CALL)) = size(0x00000000000000000000)
+
+Answer: 0x60058061000d6000396000f3fe600a6000f3
