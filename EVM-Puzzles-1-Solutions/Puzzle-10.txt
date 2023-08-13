@@ -50,7 +50,7 @@ CODESIZE = 27
 JUMPDEST = 08,
 JUMPI -> 08 : 27 > y
 
-JUMPDEST = 5B,
+JUMPDEST = 19,
 JUMPI -> 0A + y : x mod 3 = 0
 
 y = 0x19 - 0x0A = 0xF = 15
