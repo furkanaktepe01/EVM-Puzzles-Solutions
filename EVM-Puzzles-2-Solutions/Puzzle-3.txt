@@ -45,16 +45,16 @@ CALLDATA = init
 JUMPDEST = 1E,
 JUMPI -> 1E : AA = storage[05]
 
-60 05 
-80     
-61 000d 
-60 00    
-39     
-60 00    
-f3     
-fe 
-60 aa
-60 05
-55
+6005    PUSH1 05
+80      DUP1
+61000d  PUSH2 000d 
+6000    PUSH1 00
+39      CODECOPY
+6000    PUSH1 00
+f3      RETURN
+fe      INVALID
+60aa    PUSH aa 
+6005    PUSH 05
+55      SSTORE
 
 Answer: 0x60058061000d6000396000f3fe60aa600555

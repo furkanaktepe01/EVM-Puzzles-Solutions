@@ -1,0 +1,59 @@
+PUZZLE
+
+00      30        ADDRESS
+01      31        BALANCE
+02      36        CALLDATASIZE
+03      6000      PUSH1 00
+05      6000      PUSH1 00
+07      37        CALLDATACOPY
+08      36        CALLDATASIZE
+09      6000      PUSH1 00
+0B      30        ADDRESS
+0C      31        BALANCE
+0D      F0        CREATE
+0E      31        BALANCE
+0F      90        SWAP1
+10      04        DIV
+11      6002      PUSH1 02
+13      14        EQ
+14      6018      PUSH1 18
+16      57        JUMPI
+17      FD        REVERT
+18      5B        JUMPDEST
+19      00        STOP
+
+Enter the value to send:
+Enter the calldata:
+
+
+SOLUTION
+
+ADDRESS :=
+    µ'_s[0] = I_a
+
+BALANCE :=
+    µ'_s[0] = σ[µ_s[0] mod 2^160]_b
+
+DIV :=
+    µ'_s[0] = µ_s[0] / µ_s[1]
+
+CALLDATA = init
+
+JUMPDEST = 18,
+JUMPI -> 18 : balanceOf(this, beforeCREATE) / balanceOf(newContract) = 2
+
+6000    PUSH1 00
+80      DUP1
+80      DUP1
+80      DUP1
+6002    PUSH 02
+30      ADDRESS
+31      BALANCE
+04      DIV
+60aa    PUSH1 aa
+5a      GAS
+f1      CALL
+30      ADDRESS
+31      BALANCE
+
+Answer: val = 10, calldata = 0x6000808080600230310460aa5af13031

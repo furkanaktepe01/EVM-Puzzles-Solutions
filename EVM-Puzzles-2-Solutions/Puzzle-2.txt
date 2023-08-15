@@ -41,17 +41,17 @@ CALLDATA = init
 JUMPDEST = 1F,
 JUMPI -> 1F : 0A = size(output(CALL))
 
-60 05  
-80     
-61 000d 
-60 00    
-39     
-60 00    
-f3     
-fe     
-60 0a
-60 00
-f3
+6005    PUSH1 05  
+80      DUP1
+61000d  PUSH2 000d
+6000    PUSH1 00
+39      CODECOPY  
+6000    PUSH1 00
+f3      RETURN
+fe      INVALID
+600a    PUSH1 0a
+6000    PUSH1 00
+f3      RETURN
 
 10 = size(output(CALL)) = size(0x00000000000000000000)
 
