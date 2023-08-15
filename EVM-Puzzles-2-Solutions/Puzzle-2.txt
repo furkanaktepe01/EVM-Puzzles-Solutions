@@ -36,8 +36,7 @@ RETURNDATASIZE :=
     µ'_s[0] = ||µ_o|| 
 
 
-CALLDATA = init
-
+CALLDATA = init,
 JUMPDEST = 1F,
 JUMPI -> 1F : 0A = size(output(CALL))
 

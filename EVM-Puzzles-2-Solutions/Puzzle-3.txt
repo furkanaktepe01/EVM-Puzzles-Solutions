@@ -40,8 +40,7 @@ SLOAD :=
 SSTORE :=
     σ'[I_a]_s[µ_s[0]] = µ_s[1]
 
-CALLDATA = init
-
+CALLDATA = init,
 JUMPDEST = 1E,
 JUMPI -> 1E : AA = storage[05]
 

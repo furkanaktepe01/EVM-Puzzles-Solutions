@@ -1,0 +1,43 @@
+PUZZLE
+
+00      6020      PUSH1 20
+02      36        CALLDATASIZE
+03      11        GT
+04      6008      PUSH1 08
+06      57        JUMPI
+07      FD        REVERT
+08      5B        JUMPDEST
+09      36        CALLDATASIZE
+0A      6000      PUSH1 00
+0C      6000      PUSH1 00
+0E      37        CALLDATACOPY
+0F      36        CALLDATASIZE
+10      59        MSIZE
+11      03        SUB
+12      6003      PUSH1 03
+14      14        EQ
+15      6019      PUSH1 19
+17      57        JUMPI
+18      FD        REVERT
+19      5B        JUMPDEST
+1A      00        STOP
+
+Enter the calldata:
+
+
+SOLUTION
+
+MSIZE :=
+    µ'_s[0] = 32 x µ_i
+
+JUMPDEST = 08,
+JUMPI -> 08 : calldatasize > 0x20 = 32
+
+JUMPDEST = 08,
+JUMPI -> 08 : memorysize - calldatasize = 3
+
+calldatasize = 61 
+    : 61 > 32,
+      64 - 61 = 3
+
+Answer: 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

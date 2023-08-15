@@ -37,8 +37,7 @@ BALANCE :=
 DIV :=
     µ'_s[0] = µ_s[0] / µ_s[1]
 
-CALLDATA = init
-
+CALLDATA = init,
 JUMPDEST = 18,
 JUMPI -> 18 : balanceOf(this, beforeCREATE) / balanceOf(newContract) = 2
 
