@@ -53,6 +53,6 @@ cost(n) = 2 + [ (n-1) * (43) ] + 32 + 1 + 2
 cost(4) = 166 = 0xA6
 
 JUMPDEST = 1D,
-JUMPI -> 1D : gas_0 - gas_1 = 0xA6
+JUMPI -> 1D : availableGasAt(00) - availableGasAt(12) = 0xA6
 
 Answer: 4
